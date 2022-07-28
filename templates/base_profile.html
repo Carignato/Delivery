@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base_profile.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8b0a50c0df.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a class="navbar-brand" href="{{url_for('homepage')}}">
+            <img class="logo" src="https://d1dyzewqh1aksq.cloudfront.net/images/logo-americanas-mercado-E60014-1.svg"
+                alt="">
+        </a>
+    </nav>
+    <div class="container">
+        <div class="row gutters h-100">
+            <div class=" letter col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 ">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                </div>
+                                <h5 class="user-name"></h5>
+                                <h6 class="user-email"></h6>
+                            </div>
+                            <div class="about">
+                                <a href="/profile"><button type="button"
+                                        class="btn btn-block btn-primary btn-lg btn from-top"><small class="col-6"><i
+                                                class="fa-solid fa-basket-shopping fa-lg"></i>
+                                            Pedidos</small></button></span></a><br>
+                                <a href="{{url_for('address')}}"><button type="button"
+                                        class="btn btn-block btn-primary btn-lg btn from-top"><small
+                                            class="col-6"><i class="fa-solid fa-location-dot fa-lg"></i>
+                                            Endereços</small></button></span></a><br>
+                                <a href="{{url_for('cards')}}"><button type="button"
+                                        class="btn btn-block btn-primary btn-lg btn from-top"><small class="col-6"><i
+                                                class="fa-solid fa-key fa-lg"></i>Cartões
+                                            </small></button></span></a><br>
+                                <a href="{{url_for('homepage')}}"><button type="button"
+                                        class="btn btn-block btn-primary btn-lg btn from-top"><small class="col-6"><i
+                                                class="fa-solid fa-arrow-left-long fa-lg"></i>
+                                            Voltar</small></button></span></a><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-right">
+
+                {% block content %}
+
+                {% endblock %}
+        
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</body>
+
+</html>

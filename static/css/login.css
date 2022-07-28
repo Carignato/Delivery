@@ -1,0 +1,89 @@
+body {
+    font-family: "Lato", sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+    border: solid transparent;
+   
+}
+
+.sidenav {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.sidenav img{
+
+    width: 100%!important;
+    height: 100%;
+}
+
+
+.main {
+    width: 59.5%!important;
+    height: 100%!important;
+    border: solid transparent;
+}
+
+
+
+.login-form{
+    width: 100%!important;
+    margin-top: 20%!important;
+    margin-left: 5%;
+    border: solid transparent;
+    text-align: center;
+  
+}
+    
+
+
+.register-form{
+    margin-top: 15%!important;
+    border: solid transparent;
+    
+}
+
+
+.main{
+    width: 50%;
+    margin-left: 41%; 
+    border: solid transparent;
+    height: 80%;
+}
+
+.sidenav{
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border: solid transparent;
+}
+
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}
+
+.form-control{
+    width: 50%!important;
+    margin-left: 25%;
+    border-radius: 25px!important;
+}
+
+.logo-center-login{
+    margin-left: 50%;
+    width:30%;
+}
+
+.shadow{
+    width: 100%!important;
+}

@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+  <script src="{{ url_for('static', filename='script/register.js') }}"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/8b0a50c0df.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">  
+  
+</head>
+
+
+<body>
+  
+  <nav class="navbar">
+    <a class="navbar-brand" href="">
+      <img  class="logo" src="https://d1dyzewqh1aksq.cloudfront.net/images/logo-americanas-mercado-E60014-1.svg" alt="">
+    </a>
+  </nav>
+
+  
+
+  <div class="bg-light p-1 border-bottom shadow">
+    <h4 class="w-100 text-center">
+        <a href="/cadastro" class="text-decoration-none text-black-50">
+            <img  class ="logo-center" src="https://d1dyzewqh1aksq.cloudfront.net/images/logo-americanas-mercado-E60014-1.svg" width="30%">
+        </a>
+    </h4>
+</div>
+<div class="container-fluid">
+  <div class="message-custom" style="background-color: rgba(255,255,255,0.5);bottom: 40px;">
+    <h2>criar seu cadastro</h2>
+    <ul class="list-group list-group-flush">
+        <li class="message-main"><h5>Encontre mercados proximos de você, escolha seus produtos, o resto é com a gente</h5></li>
+        <span class="required">Todos os campos desse formulario são obrigatorios *</span>
+           {% for values in form_wtf.errors.values() %} 
+            <p class="register-alert">{{ values[0] }}</p>
+            {% endfor %}
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert" role="alert"><p class="message_error_flash">{{ message }}</p></div>
+                {% endfor %}
+                {% endif %}
+            {% endwith %}   
+  
+    </ul>
+</div>
+
+
+
+
+    <div class="row">
+        <div class="container mt-5 login-block">
+        	<div class="row">
+        		<div class="p-4">
+        		   
+        		       
+        		
+        		    <form method="POST"  onsubmit="ValidateEmail(email), ValidateCPF(cpf)">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                            </div>
+                          
+                            {{ form_wtf.hidden_tag() }}
+                            {{ form_wtf.name(class_="form-control")}}
+                            <div class="invalid-tooltip">
+                               
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-calendar-days"></i></span>
+                          </div>
+                            {{ form_wtf.date(class_="form-control" , onkeypress="$(this).mask('00/00/0000')") }}
+                          <div class="invalid-tooltip">
+                         
+                          </div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                        </div>
+                        {{ form_wtf.email(class_="form-control") }}
+                        <div class="invalid-tooltip">
+                       
+                          
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-id-badge"></i></i></i></span>
+                      </div>
+                      {{ form_wtf.cpf(class_="form-control" , onkeypress="$(this).mask('000.000.000-00')") }}
+                      <div class="invalid-tooltip">
+                        
+                      </div>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></i></span>
+                    </div>
+                    {{ form_wtf.phone(class_="form-control" ,  onkeypress="$(this).mask('(00) 00000-0000')") }}
+                   
+                    <div class="invalid-tooltip">
+                     
+                      
+                    </div>
+                </div>
+                     <div class="choose-gender">
+                         <span>{{ form_wtf.gender(class_="label") }}</span> 
+                         <hr>
+                      </div>   
+                     
+
+                        <div class="input-group mb-3">
+                          
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-question" title="A senha deve ter mais de 8 caracteres, conter um caracter maiusculo e um minisculo"></i></span><span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                            </div>
+                            {{ form_wtf.password(class_="form-control") }}
+            
+                           
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3"><i class="fas fa-key"></i></span>
+                            </div>
+                            {{ form_wtf.confirm_password(class_="form-control") }}
+                          
+                        </div>
+                       
+                      
+                       
+                        <hr>
+                        <div class="align-middle">
+                            <div class="d-inline custom-control custom-checkbox floar-left">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            </div>
+                            {{ form_wtf.button(class_="btn btn-primary btn-sm float-left") }}  
+                        </div>
+                    </form>
+        		</div>   
+        	</div>
+        </div>
+	</div>
+
+</div>  
+    
+
+
+<!-- Modal space  --> .
+
+<div class="modal fade" id="register_success" role="dialog">
+
+
+  <div class="modal-dialog">
+
+
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">X</button>
+          </div>
+          <div class="modal-body">
+
+            <div class="success-checkmark">
+                <div class="check-icon">
+                  <span class="icon-line line-tip"></span>
+                  <span class="icon-line line-long"></span>
+                  <div class="icon-circle"></div>
+                  <div class="icon-fix"></div>
+                </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+</body>
+
+</html>

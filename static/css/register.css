@@ -1,0 +1,76 @@
+.logo{
+    width: 150px;
+}
+.navbar{
+
+    background-color: #343a40;
+}
+
+.message-custom{
+ 
+  height: 20%;
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+.p-4{
+    margin-top: -4%;
+    margin-left: 25%;
+    width: 50%!important;
+}
+
+h2{
+    text-align: center;
+    font-size: 45px!important;
+}
+
+.btn{
+    width: 70%;
+    margin-left: 15%;
+    background-color: #343a40!important;
+    border: solid #343a40!important;
+}
+
+.choose-gender{
+    float: left;
+    width: 100%;
+}
+
+
+input:invalid {
+    border: 1px solid red;
+  }
+  
+  input:valid {
+    border: 2px solid rgb(192, 244, 128);
+  }
+
+.required{
+
+    color: red;
+    font-size: 20px;
+} 
+
+
+.register-alert{
+    border: solid red;
+    width: 100%!important;
+    height:20%!important;
+    text-align: center;
+    margin-top: 5%!important;
+    background-color: red;
+    color: #fff;
+}
+
+.label{
+    width: 100%;
+    list-style:none!important;
+}
+
+.message_error_flash{
+    text-align: center;
+    background-color: red!important;
+    color: #fff;
+}
+

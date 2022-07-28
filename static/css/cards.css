@@ -1,0 +1,30 @@
+.teste{
+    background-color: black!important;    
+    background-image: url("/static/img/background_card.png")
+}
+
+
+.chip-card{
+    margin-top: 10%;
+    width: 100px;
+    height: 50px;
+    
+}
+
+.data-credit{
+    margin-top: 5%;
+    line-height: 200%!important;
+    color: #fff;
+    font-family: monospace;
+    padding-left: 5%;
+}
+
+.button-exclude-card{
+
+    margin-top: -10%;
+    margin-left: 50%;
+    background-color: transparent!important;
+    border: solid transparent!important;
+    color: #fff!important;
+
+}

@@ -1,0 +1,153 @@
+                {% extends 'base_profile.html' %}
+
+                {% block head %}
+                    {{ super() }}
+                    <script src="{{ url_for('static', filename='script/address.js') }}"></script>
+                {% endblock %}
+
+                {% block content %}
+                <div class="grid-container">
+                    <button class="add_address" type="button" data-toggle="modal" data-target="#add_address">+ Adicionar
+                        novo endereço</button>
+                    <h5 class="address">Endereços</h5>
+
+                    <p class="message-address">Aqui você pode cadastrar o seu endereço ou de algum amigo caso deseje
+                        enviar uma compra especial para ele :)</p>
+
+                    {% for address in address_info %}
+                    <div class="grid-item" style="background-color: #fff;">
+                        
+                        <p class="d-none">{{[ address.name, address.cep, address.street, address.number, address.complement, address.zone, address.city, address.state, address.id ]}}</p>
+                        <p class="user-address">{{address.name}}</p>
+                        <hr>
+                        <p class="user-name-address">{{address.street}}, {{address.number}}</p>
+                        <p class="user-name-address">{{address.zone}}, {{ address.city }}, {{address.state}}</p>
+                        <p class="user-name-address">CEP:{{address.cep}}</p>
+
+                        <!-- <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#edit_address">Editar</button> -->
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#edit_address"    onclick="chamarModalEdit(this.parentNode.querySelector('p').innerHTML)">Editar</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exclude_address" onclick="chamarModalExclude(this.parentNode.querySelector('p').innerHTML, '{{url_for('exclude_address')}}')">Excluir</button>
+                    </div>
+                    {% endfor %}
+
+                    <div class="modal fade" id="edit_address"    role="dialog"></div>
+                    <div class="modal fade" id="exclude_address" role="dialog"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal_add_Address -->
+
+    <div class="modal fade" id="add_address" role="dialog">
+
+
+        <div class="modal-dialog">
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Insira as informações do endereço abaixo</h5>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+
+                </div>
+                <div class="modal-body">
+
+
+                    <form class="form" method="POST">
+
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-id-badge"></i></span>
+                            </div>
+                       
+                                {{ form_address_wtf.hidden_tag() }}
+                                {{ form_address_wtf.name(class_="form-control") }}
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-location-dot"></i></span>
+                            </div>
+
+                                {{ form_address_wtf.cep(class_="form-control", onkeypress="$(this).mask('00000-000')" ,  onblur="pesquisacep(this.value);") }}
+                                
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-road"></i></span>
+                            </div>
+
+                                {{ form_address_wtf.street(class_="form-control")  }}
+
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-house"></i></span>
+                            </div>
+                            {{ form_address_wtf.number(class_="form-control") }}
+
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-hashtag"></i></span>
+                            {{ form_address_wtf.complement(class_="form-control") }}
+
+                        </div>
+
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-house"></i></span>
+                            </div>
+                            {{ form_address_wtf.zone(class_="form-control") }}
+
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-building"></i></span>
+                            </div>
+                            {{ form_address_wtf.city(class_="form-control") }}
+
+                        </div>
+                        <div class="input-group mb-3">
+
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-building"></i></span>
+                            </div>
+                            {{ form_address_wtf.state(class_="form-control") }}
+
+                        </div>
+                        {% if address_info | length > 0 %}
+                        <div class="input-group mb-3">
+                            
+                            <div class="form-check">
+                                    {{ form_address_wtf.set_default(class_="form-check-input", type="checkbox", checked=False) }}
+                                    <label class="form-check-label">
+                                        Endereço Padrão
+                                    </label>
+                            </div>
+                                
+                        </div>
+                        {% else %}
+                            {{ form_address_wtf.set_default(class_="form-control", type="hidden", value="y") }}
+                        {% endif %}
+
+                        {{ form_address_wtf.button(class_="btn btn-add") }}
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+
+    {% endblock %}

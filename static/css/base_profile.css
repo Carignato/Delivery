@@ -1,0 +1,264 @@
+body{
+    background-color: #f1f1f1!important;
+    width: 100vw;
+    height: 1080px!important;
+    font-family: 'Open Sans', sans-serif;
+    
+    }
+    
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+        color: #fff;
+        
+    }
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+        
+    }
+    .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+        
+    }
+    .account-settings .user-profile h5.user-name {
+        margin: 0 0 0.5rem 0;
+        
+    }
+    .account-settings .user-profile h6.user-email {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 400;
+        
+        
+    }
+    .account-settings .about {
+        margin: 1rem 0 0 0;
+        font-size: 0.8rem;
+        text-align: center;
+        
+        
+    }
+    .card {
+        background-color: transparent!important;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+        text-align: center!important;
+        
+    }
+
+  
+  
+
+  
+  .btn-primary {
+    background: rgb(255, 255, 255)!important;
+    border-radius: 15px!important;
+    width: 100% !important;
+    height: 7%;
+    display: inline;
+    border-color: #fff!important;
+    color: #000!important;
+    
+  }
+
+  @media (max-width: 992px)
+{
+  .btn-primary
+   {
+    height: 5%;
+
+   }
+}    
+  
+  .btn-primary:focus {
+    box-shadow: none;
+    border: none;
+
+  }
+  
+  .button-primary:hover, 
+  .button-primary:active,
+  .button-primary:visited,
+  .button-primary:link {
+      
+      background-color: #000000 !important;
+      border-color: #000000 !important;
+      background-image: none !important;
+      border: 0 !important;
+      color: inherit!important; 
+        
+  }
+
+
+  
+
+ 
+.menu-right{
+    margin-top: 0!important;
+    height: 98%;
+    width:72.5%;   
+    float:right;
+    
+}
+  
+
+@media (max-width: 992px)
+{
+  .menu-right
+   {
+    border: solid red;
+    width: 100%;
+    float: left;
+    margin-left: 0%;
+   }
+}    
+
+
+.letter{
+    height: 98%;
+    width: 100%!important;
+    
+}
+.grid-container{
+    width: 100%;
+    height: 730px!important;
+    margin-top: 5%;
+
+}
+.grid-item{
+    margin-left: 0%!important;
+    width: 40%;
+    height: 30%;
+    border-radius: 25px;
+    line-height: 10px;
+    border: solid transparent;
+    float: left;
+
+
+}
+
+.user-address{
+    font-size: 1.1em;
+    padding-left: 15px; 
+    padding-top: 20px;
+    width: 100%;
+    height: 10%;
+    font-weight: 500;
+    
+
+}
+
+.user-name-address{
+    font-size: 0.9em;
+    padding-left: 15px;   
+    color: gray;
+    
+
+}
+
+
+.logo{
+    width: 150px;
+}
+.navbar{
+
+    background-color: #343a40;
+}
+
+.btn-secondary{
+    width: 45%;
+    float: left;
+    margin-top: 7%;
+    margin-left: 3%;
+    background-color: #fff!important;
+    color: red!important;
+    border: solid #fff!important;
+}
+
+.btn-secondary:hover 
+.btn-secondary:link
+.btn-secondary:visited
+.btn-secondary:active{
+   border: inherit!important;
+
+}
+
+.required{
+    color: red;
+}
+
+.number{
+    width: 80px!important;
+    border: solid 1px #ced4da;
+}
+
+.complement{
+    border: solid 1px #ced4da;
+}
+
+.btn-add{
+
+    background-color: red!important;
+    color: #fff!important;
+    font-weight: 700!important;
+    border: solid  red!important;;
+
+}
+.message-address{
+font-size: 20px;
+text-align: center;
+color: #787b8e;
+}
+
+.address{
+    
+    color: #475370;
+    padding-left: 1.5%;
+    padding-top: 1.5%;
+    font-weight: 700;
+    
+}
+
+.add_address{
+float: right;
+background-color: #f1f1f1!important;
+color: red!important;
+border: solid #f1f1f1!important;
+}
+
+.mark-red{
+    border: solid 1px red!important;
+}
+
+.close{
+   
+    color: #000!important;
+    font-weight: 700;
+} 
+
+
+input:invalid {
+    border: 1px solid red;
+  }
+  
+  input:valid {
+    border: 2px solid rgb(192, 244, 128);
+  }
+
+.required{
+
+    color: red;
+    font-size: 20px;
+} 
+
+
+
+

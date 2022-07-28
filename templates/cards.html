@@ -1,0 +1,114 @@
+{% extends 'base_profile.html' %}
+
+    {% block head %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='script/cards.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cards.css') }}">
+    {% endblock %}
+
+
+{% block content %}
+<div class="grid-container">
+    <button class="add_address" type="button" data-toggle="modal" data-target="#add_card">+ Adicionar
+        novo Cartão</button>
+       
+        
+    <h4 class="address">Cartões</h4>
+    <p class="message-address">Aqui você pode cadastrar o seu cartão</p>
+
+
+    {% for card in cards_info %}
+    <div class="grid-item teste">
+
+        
+        <img class="chip-card" src="{{ url_for('static', filename='img/chip.png')}} ">
+
+        <div class="data-credit">
+           <p class="d-none">{{[ card.id ]}}</p>  
+           <div>{{card.card_number}}</div>
+           <div>Validade: {{card.valid_date}}</div>
+           <div>{{card.name_card}}</div>
+        </div>      
+        <button type="button" class="btn btn-secondary button-exclude-card" data-toggle="modal" data-target="#exclude_card" onclick="chamarModalExclude(this.parentNode.querySelector('p').innerHTML, '{{url_for('exclude_card')}}')">Excluir</button>
+
+    </div>
+      
+    {% endfor %}    
+
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="exclude_card" role="dialog"></div>
+
+
+
+<div class="modal fade" id="add_card" role="dialog">
+
+
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Insira as informações do endereço abaixo</h5>
+                <button type="button" class="close" data-dismiss="modal">X</button>
+
+            </div>
+            <div class="modal-body">
+
+
+                <form class="form" method="POST">
+
+                    <div class="input-group mb-3">
+
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-credit-card"></i></span>
+                        </div>
+                    <form class="form" method="POST">
+
+                           
+                        {{ form_cards_wtf.hidden_tag() }}
+                        {{ form_cards_wtf.card_number(class_="form-control" , onkeypress="$(this).mask('0000 0000 0000 0000')") }}
+
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-user"></i></span>
+                        </div>
+
+                        {{ form_cards_wtf.name_card(class_="form-control") }}
+                            
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-credit-card"></i></span>
+                        </div>
+
+                        {{ form_cards_wtf.valid_date(class_="number" , onkeypress="$(this).mask('00/00')") }}
+
+                        <span class="input-group-text" id="basic-addon1"><i
+                            class="fa-solid fa-lock"></i></span>
+
+
+                        {{ form_cards_wtf.code(class_="number") }}
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                           
+                                   
+                        </div>
+
+                    </div>
+                             {{form_cards_wtf.button(class_="btn btn-add") }}  
+
+                </form>
+
+
+                        {% endblock %}    

@@ -1,0 +1,95 @@
+body{background-color:grey}
+
+
+.fa-solid{
+   color: white;
+}
+
+.search-custom{
+    position: relative;
+    width: 40%!important;
+    margin-left: 25%;
+    border: 1px solid #000;
+    padding: 4px 12px;
+    border-radius: 16px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 7%;
+    margin-left: 5%!important;
+  }
+  
+  .item {
+    flex: 0 32%;
+    height: 100px;
+    margin-bottom: 2%; /* (100-32*3)/2 */
+  
+  }
+  .form-inline{
+    width: 80%;
+
+  }
+
+  .navbar-brand{
+    width: 150px;   
+
+}
+.custom{
+    margin-top:1%;
+    height: 15px;
+}
+.btn-secondary{
+    width: 100%;
+    margin-top: 1%;
+    background-color: #343a40!important;
+    border: solid 0.1px #343a40!important;
+
+}
+.locale{
+margin-left:-50%; 
+height: 35px;
+  
+}
+
+.logo-center img{
+
+  width: 10%!important;
+
+}
+
+.message-custom{
+  border: solid red!important;
+
+}
+
+
+
+.btn-locale{
+
+  background-color: #343a40!important;
+  border: solid 0.1px #343a40!important;
+
+}
+
+.address-modal{
+margin-left: 20%;  
+line-height: 5px;  
+width: 60%!important;
+height: 20%!important;
+border: solid 0.7px rgb(125, 125, 125);
+
+}
+
+
+.name-user-address{
+  padding-top: 6px;
+  font-weight: 600;
+}
+
+.street-modal{
+
+color: #808080;  
+}

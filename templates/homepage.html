@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/homepage.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/8b0a50c0df.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">  
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="{{url_for('homepage')}}" data-abc="true"><img src="https://d1dyzewqh1aksq.cloudfront.net/images/logo-americanas-mercado-E60014-1.svg" alt="..."></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0"> <input class="search-custom" type="text" placeholder="Search"></form>
+        
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active locale"> <a class="nav-link" href="#" data-abc="true"><button type="button" class="btn btn-info btn-lg btn-locale" data-toggle="modal" data-target="#myModal">Rua Paulino de brito, 565</button><span class="sr-only">(current)</span></a> </li>
+              <div class="dropdown">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton"  aria-haspopup="true" data-toggle="dropdown"  aria-expanded="false">
+                  <li class="nav-item custom"> <i class="fa-solid fa-basket-shopping fa-xl"></i></li>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Alguma ação</a>
+                  <a class="dropdown-item" href="#">Outra ação</a>
+                  <a class="dropdown-item" href="#">Alguma coisa aqui</a>
+                </div>
+              </div>
+             
+              <div class="dropdown">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div>
+                  <li class="nav-item custom"><i class="fa-solid fa-user fa-xl"></i></li>
+            
+                  Olá, faça seu login<br>
+                  ou cadastre-se
+               
+                </div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="{{url_for('register')}}">Cadastro</a>
+                  <a class="dropdown-item" href="{{url_for('address')}}">Ver perfil</a>
+                  <a class="dropdown-item" href="#">Alguma coisa aqui</a>
+                </div>
+              </div>
+             
+          </ul>
+
+        
+          
+        </div>
+
+          
+      </div>
+
+  </nav>
+
+
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <div class="address-modal">
+          <p class="name-user-address">Lucas Carignato</p>
+          <p class="street-modal">Rua Paulino de brito, 565 - Santana</p>
+          <p class="street-modal">São Paulo - SP , CEP: 02223-010</p>
+          </div>
+          <div class="address-modal">
+            <p class="name-user-address">Lucas Carignato</p>
+            <p class="street-modal">Rua Paulino de brito, 565 - Santana</p>
+            <p class="street-modal">São Paulo - SP , CEP: 02223-010</p>
+            </div>
+            <div class="address-modal">
+              <p class="name-user-address">Lucas Carignato</p>
+              <p class="street-modal">Rua Paulino de brito, 565 - Santana</p>
+              <p class="street-modal">São Paulo - SP , CEP: 02223-010</p>
+            </div>
+       </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
