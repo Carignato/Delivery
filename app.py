@@ -19,6 +19,8 @@ login_manager.init_app(app)
 login_manager = LoginManager(app)
 app_static_folder="static"
 
+
+
 def obj_to_dict(obj):
     return {c.key: getattr(obj, c.key) for c in inspect(obj).mapper.column_attrs}
 
