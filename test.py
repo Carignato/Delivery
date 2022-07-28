@@ -1,9 +1,10 @@
-import pytest
+# test_with_unittest.py
 
-list = [1,2]
+from unittest import TestCase
 
-teste = sum(list)
+class TryTesting(TestCase):
+    def test_always_passes(self):
+        self.assertTrue(True)
 
-assert teste == 3
-
-    
+    def test_always_fails(self):
+        self.assertTrue(True)
