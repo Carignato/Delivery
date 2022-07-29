@@ -2,6 +2,7 @@
 name: Python application
 
 on:
+  push:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:

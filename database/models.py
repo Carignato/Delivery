@@ -5,9 +5,10 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Date, create_engine
 from flask_login import UserMixin
 from sqlalchemy.ext.declarative import declarative_base
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
 from datetime import datetime
-from wtf import Address_wtf 
+from wtf_models import Address_wtf 
 
 engine = create_engine('sqlite:///market.db?check_same_thread=False')
 DeclarativeBase = declarative_base()
@@ -71,6 +72,7 @@ class Cards(Base, UserMixin):
     name_card = db.Column(db.String(84), nullable = False)
     valid_date = db.Column(db.String(84), nullable = False)
     code = db.Column(db.Integer, nullable = False)
+    
 
 Base.metadata.create_all(engine)
 

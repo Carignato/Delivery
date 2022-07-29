@@ -1,19 +1,19 @@
-from pydoc import render_doc
-from wtf import *
+from ast import Return
+from urllib3 import Retry
+from wtf_models import *
 from flask import Flask, redirect, render_template, request, url_for, flash
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_sqlalchemy import SQLAlchemy, inspect
-from models import *
+from werkzeug.security import check_password_hash
 import re
-from datetime import date
-import random
+from database.models import User, Cards, Address, DefaultAddress, session, db
+from functions import createCard, createRegister, createAddress
+from classes import FindUser
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = 'secret'
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///market.db?check_same_thread=False"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database/market.db?check_same_thread=False"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager = LoginManager(app)
@@ -21,66 +21,7 @@ app_static_folder="static"
 
 
 
-def obj_to_dict(obj):
-    return {c.key: getattr(obj, c.key) for c in inspect(obj).mapper.column_attrs}
 
-def flatten_join(tup_list):
-    return [{**obj_to_dict(a), **obj_to_dict(b)} for a,b in tup_list]
-
-def createAddress(form):
-    if 'id' in form:
-        address = Address(
-            name = form['name'],
-            cep = form['cep'].replace('-',''),
-            street = form['street'],
-            number = form['number'],
-            complement = form['complement'],
-            zone = form['zone'],
-            city = form['city'],
-            state = form['state'],
-            id = form['id'],
-            id_user = current_user.id
-        )
-    else:
-        address = Address(
-            name = form['name'],
-            cep = form['cep'].replace('-',''),
-            street = form['street'],
-            number = form['number'],
-            complement = form['complement'],
-            zone = form['zone'],
-            city = form['city'],
-            state = form['state'],
-            id_user = current_user.id
-        )
-    return address
-
-
-def createRegister(form):
-    register = User(
-        name = form['name'].strip(),
-        email = form['email'].replace(" ", ""),
-        date = form['date'].replace(" ", "").replace('/','-'),
-        cpf = form['cpf'], 
-        phone = form['phone'], 
-        gender = form['gender'].replace(" ", ""),
-        password = generate_password_hash(form['password'])
-        )   
-    return register
-  
-  
-def createCard(form):
-    cards = Cards(
-        card_number = form['card_number'].replace(" ", ""),
-        name_card = form['name_card'],
-        valid_date = form['valid_date'].replace(" ", ""),
-        code =  generate_password_hash(form['code']),
-        id_user = current_user.id
-        )  
-     
-    return cards  
-  
-  
 
 @login_manager.user_loader
 def load_user(id):
@@ -96,30 +37,23 @@ def homepage():
 def base_profile():
     return render_template('base_profile.html')
 
-@app.route("/login", methods =["GET", "POST"])
+@app.route("/", methods =["GET", "POST"])
 def login():
     if request.method == "POST":    
-        from database.classes import FindUser
         
-        form_email = request.form['email']
+        email = request.form['email']
         form_password = request.form['password']
         
-        check_user = FindUser().find_user_by_email(form_email)
+        check_user = FindUser()
+        check_user.find_user_by_email(email)
         
-        if check_user == None:
-           flash('E-mail ou senha incorretos', 'login_error') 
-           return render_template('login.html')
-       
-        if not check_password_hash(check_user.password,form_password):
-             return render_template('login.html')
+        print(teste)
         
-        else:
-            login_user(check_user) 
-          
-            return redirect(url_for('homepage'))
-   
+
     
+        return redirect(url_for('homepage'))
     
+  
     return render_template('login.html')   
     
 @app.route('/logout')
@@ -127,12 +61,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-
-
-
-
-
 
 
 @app.route('/cards',  methods = ['GET','POST'])
@@ -211,11 +139,6 @@ def register():
         return render_template('register_success.html', form_wtf = form_wtf)
     
     return render_template('register.html', form_wtf = form_wtf)
-
-
-
-
-
 
 @app.route('/address', methods = ['GET','POST'])
 @login_required
